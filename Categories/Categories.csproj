@@ -16,5 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="Views\Data\" />
   </ItemGroup>
 </Project>

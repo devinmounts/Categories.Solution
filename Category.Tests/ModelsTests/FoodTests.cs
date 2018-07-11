@@ -99,5 +99,22 @@ namespace Categories.Tests
             Assert.AreEqual(testId, result);
         }
 
+        [TestMethod]
+        public void Edit_UpdatesFoodInDatabase_String()
+        {
+            //Arrange
+            string firstName = "apple";
+            Food testFood = new Food(1, 2, firstName);
+            testFood.Save();
+            string secondName = "Fuji Apple";
+
+            //Act
+            testFood.Edit(secondName);
+
+            string result = Food.Find(testFood.GetId()).GetName();
+                             
+            Assert.AreEqual(secondName, result);
+        }
+
     }
 }
