@@ -9,7 +9,7 @@ namespace Categories.Models
         private int _id;
         private string _name;
         private int _categoryId;
- 
+
 
         public Food(int id, int categoryId, string name)
         {
@@ -41,20 +41,20 @@ namespace Categories.Models
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"SELECT * FROM foods;";
             MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-            while(rdr.Read())
+            while (rdr.Read())
             {
                 int Id = rdr.GetInt32(0);
                 int CategoryId = rdr.GetInt32(1);
                 string Name = rdr.GetString(2);
                 Food newFood = new Food(Id, CategoryId, Name);
                 allFoods.Add(newFood);
-            }    
+            }
             conn.Close();
             if (conn != null)
             {
                 conn.Dispose();
             }
-            return allFoods;   
+            return allFoods;
         }
 
         public override bool Equals(System.Object otherFood)
@@ -150,12 +150,12 @@ namespace Categories.Models
 
             while (rdr.Read())
             {
-                int Id = rdr.GetInt32(0);
-                int CategoryId = rdr.GetInt32(1);
-                string Name = rdr.GetString(2);
+                Id = rdr.GetInt32(0);
+                CategoryId = rdr.GetInt32(1);
+                Name = rdr.GetString(2);
             }
 
-            Food foundItem = new Food(id, CategoryId, Name);  // This line is new!
+            Food foundFood = new Food(id, CategoryId, Name); 
 
             conn.Close();
             if (conn != null)
@@ -163,8 +163,39 @@ namespace Categories.Models
                 conn.Dispose();
             }
 
-            return foundItem;  // This line is new!
+            return foundFood;
+          
 
+        }
 
+        public void Edit(string newName)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"UPDATE foods SET name = @newName WHERE id = @thisId;";
+
+            MySqlParameter thisId = new MySqlParameter();
+            thisId.ParameterName = "@thisId";
+            thisId.Value = _id;
+            cmd.Parameters.Add(thisId);
+
+            MySqlParameter name = new MySqlParameter();
+            name.ParameterName = "@newName";
+            name.Value = newName;
+            cmd.Parameters.Add(name);
+
+            cmd.ExecuteNonQuery();
+            _name = newName;
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+        }
+
+  
     }
 }

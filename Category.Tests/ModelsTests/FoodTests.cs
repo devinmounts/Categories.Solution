@@ -85,5 +85,19 @@ namespace Categories.Tests
             Assert.AreEqual(testId, result);
         }
 
+        [TestMethod]
+        public void Find_FinsIdOfObject_Id()
+        {
+            Food testFood = new Food(1, 2, "apple");
+
+            testFood.Save();
+            Food savedFood = Food.Find(1);
+
+            int result = savedFood.GetId();
+            int testId = testFood.GetId();
+
+            Assert.AreEqual(testId, result);
+        }
+
     }
 }
