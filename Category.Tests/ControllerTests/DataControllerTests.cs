@@ -54,5 +54,8 @@ namespace Categories.Tests.ControllerTests
             var result = resultsView.ViewData.Model;
             Assert.IsInstanceOfType(result, typeof(List<Food>));
         }
+
+
+
     }
 }

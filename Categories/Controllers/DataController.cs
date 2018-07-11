@@ -16,22 +16,41 @@ namespace Categories.Controllers
         }
 
         [HttpGet("/add")]
-        public ActionResult Add()
+        public ActionResult AddForm()
         {
             return View();
+        }
+
+        [HttpPost("/add")]
+        public ActionResult Add(int category, string name)
+        {
+            int id = 0;
+            Food newFood = new Food(id, category, name);
+            newFood.Save();
+            return RedirectToAction("All");
         }
 
         [HttpGet("/all/{id}/update")]
         public ActionResult UpdateForm(int id)
         {
             Food thisFood = Food.Find(id);
-            return View(thisFood);
+            return View("Update", thisFood);
         }
+
+        [HttpPost("/all/{id}/update")]
+        public ActionResult Update(int id, string newname)
+        {
+            Food thisFood = Food.Find(id);
+            thisFood.Edit(newname);
+            return RedirectToAction("All");
+        }
+
 
         [HttpGet("/all")]
         public ActionResult All()
         {
-            return View();
+            List<Food> results = Food.GetAll();
+            return View(results);
         }
 
         [HttpPost("/results")]
@@ -45,5 +64,15 @@ namespace Categories.Controllers
             List<Food> results = Food.GetAll();
             return View(results);
         }
+
+        [HttpPost("/all/{id}/delete")]
+        public ActionResult DeletePage(int id)
+        {
+
+            Food.DeleteFood(id);
+            return RedirectToAction("All");
+        }
+
+
     }
 }
