@@ -4,7 +4,7 @@
 
 <h1>Food</h1>
 <hr />
-<h2>Edit category: @Model.GetName()</h2>
+<h2>Edit Food: @Model.GetName()</h2>
 <form action="/food/all/@Model.GetId()/update" method="post">
     <label for="name">Name:</label>
     <input type="text" name="newname" value="@Model.GetName()">

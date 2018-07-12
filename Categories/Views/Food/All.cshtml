@@ -28,10 +28,10 @@
             <p>@food.GetCategoryId()</p>
         </div>
          <div class="col-md-2">
-            <p><a class="btn btn-danger" href="/food/all/@food.GetCategoryId()/update">Edit</a></p>
+            <p><a class="btn btn-danger" href="/food/all/@food.GetId()/update">Edit</a></p>
         </div>
          <div class="col-md-2">
-            <p><form id="food" action="/food/all/@food.GetCategoryId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form></p>
+            <p><form id="food" action="/food/all/@food.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form></p>
         </div>
     </div>
         }
