@@ -11,7 +11,7 @@ namespace Categories.Tests.ModelsTests
         public void Dispose()
         {
             Category.DeleteAll();
-            Category.DeleteAll();
+            Food.DeleteAll();
         }
 
         public CategoryTests()
@@ -85,6 +85,25 @@ namespace Categories.Tests.ModelsTests
 
             //Assert
             Assert.AreEqual(testCategory, foundCategory);
+        }
+
+        [TestMethod]
+        public void GetFoods_RetrievesAllFoodsWithCategory_FoodList()
+        {
+            Category testCategory = new Category("vegetables");
+            testCategory.Save();
+            int id = 0;
+
+            Food firstFood = new Food(id, testCategory.GetId(), "kale");
+            firstFood.Save();
+            Food secondFood = new Food(id, testCategory.GetId(), "zucchini");
+            secondFood.Save();
+
+
+            List<Food> testFoodList = new List<Food> { firstFood, secondFood };
+            List<Food> resultFoodList = testCategory.GetFoods();
+
+            CollectionAssert.AreEqual(testFoodList, resultFoodList);
         }
     }
 }

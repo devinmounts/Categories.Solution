@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "_Layout";
+}
+ <div class='container' id="category-container"=>
+        <h1>All Categories</h1>
+
+    <div class="row titles"=>
+        <div class="col-md-5">
+            <h4>Category Name</h4>
+        </div>
+         <div class="col-md-3">
+            <h4>Category Id</h4>
+        </div>
+         <div class="col-md-2">
+            <h4>Edit</h4>
+        </div>
+         <div class="col-md-2">
+            <h4>Delete</h4>
+        </div>
+    </div>
+        @foreach(var category in Model)
+        {
+        <div class="row data">
+        <div class="col-md-5">
+            <p class="name">@category.GetName()</p>
+        </div>
+         <div class="col-md-3">
+            <p>@category.GetId()</p>
+        </div>
+         <div class="col-md-2">
+            <p><a class="btn btn-danger" href="/category/all/@category.GetId()/update">Edit</a></p>
+        </div>
+         <div class="col-md-2">
+            <p><form id="category" action="/category/all/@category.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form></p>
+        </div>
+    </div>
+        }
+</div>
+    

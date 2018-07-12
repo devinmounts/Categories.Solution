@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
@@ -31,9 +30,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="home" asp-action="index">Home</a></li>
-                    <li><a asp-area="" asp-controller="data" asp-action="search">Search</a></li>
-                    <li><a asp-area="" asp-controller="data" asp-action="add">Add</a></li>
-                    <li><a asp-area="" asp-controller="data" asp-action="all">View</a></li>
+                    <li><a asp-area="" asp-controller="food" asp-action="search">Search Foods</a></li>
+                    <li><a asp-area="" asp-controller="food" asp-action="add">Add Food</a></li>
+                    <li><a asp-area="" asp-controller="food" asp-action="all">View All Foods</a></li>
+                    <li><a asp-area="" asp-controller="category" asp-action="search">Search Categories</a></li>
+                    <li><a asp-area="" asp-controller="category" asp-action="add">Add Category</a></li>
+                    <li><a asp-area="" asp-controller="category" asp-action="all">View All Categories</a></li>    
                 </ul>
             </div>
         </div>
