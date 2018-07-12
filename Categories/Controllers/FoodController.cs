@@ -18,7 +18,8 @@ namespace Categories.Controllers
         [HttpGet("/food/add")]
         public ActionResult AddForm()
         {
-            return View();
+            List<Category> results = Category.GetAll();
+            return View(results);
         }
 
         [HttpPost("/food/add")]
