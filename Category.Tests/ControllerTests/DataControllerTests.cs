@@ -27,8 +27,8 @@ namespace Categories.Tests.ControllerTests
         public void Add_ReturnsCorrectView_True()
         {
             DataController controller = new DataController();
-            ActionResult addView = controller.Add();
-            Assert.IsInstanceOfType(addView, typeof(ViewResult));
+            ActionResult addView = controller.Add(1, "apple");
+            Assert.IsInstanceOfType(addView, typeof(RedirectToActionResult));
         }
 
         [TestMethod]

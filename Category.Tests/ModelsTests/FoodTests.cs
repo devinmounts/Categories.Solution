@@ -14,7 +14,7 @@ namespace Categories.Tests
         }
         public void FoodTests()
         {
-            DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=relations;";
+            DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=relations_test;";
         }
 
         [TestMethod]

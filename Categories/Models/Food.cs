@@ -69,7 +69,8 @@ namespace Categories.Models
                 Food newFood = (Food)otherFood;
                 bool idEquality = (this.GetId() == newFood.GetId());
                 bool nameEquality = (this.GetName() == newFood.GetName());
-                return (idEquality && nameEquality);
+                bool categoryIdEquality = (this.GetCategoryId() == newFood.GetCategoryId());
+                return (idEquality && nameEquality && categoryIdEquality);
             }
         }
 
